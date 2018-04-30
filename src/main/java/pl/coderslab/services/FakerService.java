@@ -3,6 +3,7 @@ package pl.coderslab.services;
 import com.github.javafaker.Faker;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 public class FakerService {
     private ArrayList<JSONObject> todayGames = new ArrayList<>();
 
+    @Scheduled(fixedRate = 5000)
     public void regenerate() throws JSONException {
         Faker faker = new Faker();
         todayGames.clear();
