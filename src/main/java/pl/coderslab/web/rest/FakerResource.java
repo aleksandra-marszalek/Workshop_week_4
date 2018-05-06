@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.coderslab.services.FakerCountryService;
 import pl.coderslab.services.FakerService;
+import pl.coderslab.services.FakerUserService;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
@@ -25,6 +26,9 @@ public class FakerResource {
     @Autowired
     FakerCountryService fakerCountryService;
 
+    @Autowired
+    FakerUserService fakerUserService;
+
     @GetMapping("/fake-today-games")
     @ResponseBody
     public String sample() {
@@ -36,4 +40,8 @@ public class FakerResource {
     public String countries() {
         return fakerCountryService.getCountries().toString();
     }
+
+    @GetMapping("/fake-users")
+    @ResponseBody
+    public String users() { return fakerUserService.getUsers().toString();}
 }
